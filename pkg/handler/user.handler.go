@@ -1,0 +1,43 @@
+package handler
+
+import (
+	"github.com/NattapornTee22816/me-cloud-api/pkg/repository"
+	"github.com/gofiber/fiber/v3"
+	"github.com/redis/go-redis/v9"
+)
+
+type UserHandler struct {
+	app     *fiber.App
+	repo    *repository.Repository
+	session *redis.Client
+}
+
+func NewUserHandler(app *fiber.App, repo *repository.Repository, session *redis.Client) *UserHandler {
+	return &UserHandler{
+		app,
+		repo,
+		session,
+	}
+}
+
+func (h *UserHandler) Mount() {
+	group := h.app.Group("/api/v1/user")
+	group.Get("", h.getUser)
+}
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Get User
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+func (h *UserHandler) getUser(ctx fiber.Ctx) error {
+
+	return nil
+}
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Create User
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+func (h *UserHandler) createUser(ctx fiber.Ctx) error {
+	return nil
+}
